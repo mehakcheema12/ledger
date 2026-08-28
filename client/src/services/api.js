@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ledger-l29y.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const getHeaders = (token) => ({
   "Content-Type": "application/json",
