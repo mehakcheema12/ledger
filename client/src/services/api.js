@@ -45,21 +45,21 @@ export const authService = {
 // Habit Services
 export const habitService = {
   async getHabits(token) {
-    const res = await fetch(`${API_BASE_URL}/habits`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits`, {
       headers: getHeaders(token),
     });
     return res.json();
   },
 
   async getHabit(token, id) {
-    const res = await fetch(`${API_BASE_URL}/habits/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits/${id}`, {
       headers: getHeaders(token),
     });
     return res.json();
   },
 
   async createHabit(token, habitData) {
-    const res = await fetch(`${API_BASE_URL}/habits`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits`, {
       method: "POST",
       headers: getHeaders(token),
       body: JSON.stringify(habitData),
@@ -68,7 +68,7 @@ export const habitService = {
   },
 
   async updateHabit(token, id, habitData) {
-    const res = await fetch(`${API_BASE_URL}/habits/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits/${id}`, {
       method: "PUT",
       headers: getHeaders(token),
       body: JSON.stringify(habitData),
@@ -77,7 +77,7 @@ export const habitService = {
   },
 
   async deleteHabit(token, id) {
-    const res = await fetch(`${API_BASE_URL}/habits/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits/${id}`, {
       method: "DELETE",
       headers: getHeaders(token),
     });
@@ -85,7 +85,7 @@ export const habitService = {
   },
 
   async logCompletion(token, habitId, date, count = 1, notes = "") {
-    const res = await fetch(`${API_BASE_URL}/habits/log/complete`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits/log/complete`, {
       method: "POST",
       headers: getHeaders(token),
       body: JSON.stringify({ habitId, date, count, notes }),
@@ -94,7 +94,7 @@ export const habitService = {
   },
 
   async unlogCompletion(token, habitId, date) {
-    const res = await fetch(`${API_BASE_URL}/habits/log/uncomplete`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits/log/uncomplete`, {
       method: "POST",
       headers: getHeaders(token),
       body: JSON.stringify({ habitId, date }),
@@ -106,7 +106,7 @@ export const habitService = {
     const params = new URLSearchParams({ habitId });
     if (startDate) params.append("startDate", startDate);
     if (endDate) params.append("endDate", endDate);
-    const res = await fetch(`${API_BASE_URL}/habits/logs?${params}`, {
+    const res = await fetch(`${API_BASE_URL}/api/habits/logs?${params}`, {
       headers: getHeaders(token),
     });
     return res.json();
@@ -116,14 +116,14 @@ export const habitService = {
 // Analytics Services
 export const analyticsService = {
   async getDashboardAnalytics(token) {
-    const res = await fetch(`${API_BASE_URL}/analytics/dashboard`, {
+    const res = await fetch(`${API_BASE_URL}/api/analytics/dashboard`, {
       headers: getHeaders(token),
     });
     return res.json();
   },
 
   async getHabitAnalytics(token, habitId) {
-    const res = await fetch(`${API_BASE_URL}/analytics/habit/${habitId}`, {
+    const res = await fetch(`${API_BASE_URL}/api/analytics/habit/${habitId}`, {
       headers: getHeaders(token),
     });
     return res.json();
@@ -133,14 +133,14 @@ export const analyticsService = {
     const params = new URLSearchParams();
     if (month) params.append("month", month);
     if (year) params.append("year", year);
-    const res = await fetch(`${API_BASE_URL}/analytics/monthly?${params}`, {
+    const res = await fetch(`${API_BASE_URL}/api/analytics/monthly?${params}`, {
       headers: getHeaders(token),
     });
     return res.json();
   },
 
   async getStreakRankings(token) {
-    const res = await fetch(`${API_BASE_URL}/analytics/streaks`, {
+    const res = await fetch(`${API_BASE_URL}/api/analytics/streaks`, {
       headers: getHeaders(token),
     });
     return res.json();
