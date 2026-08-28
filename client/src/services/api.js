@@ -8,7 +8,7 @@ const getHeaders = (token) => ({
 // Auth Services
 export const authService = {
   async register(name, email, password, confirmPassword) {
-    const res = await fetch(`${API_BASE_URL}/auth/register`, {
+    const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
       method: "POST",
       headers: getHeaders(),
       body: JSON.stringify({ name, email, password, confirmPassword }),
@@ -17,7 +17,7 @@ export const authService = {
   },
 
   async login(email, password) {
-    const res = await fetch(`${API_BASE_URL}/auth/login`, {
+    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
       method: "POST",
       headers: getHeaders(),
       body: JSON.stringify({ email, password }),
@@ -26,14 +26,14 @@ export const authService = {
   },
 
   async getCurrentUser(token) {
-    const res = await fetch(`${API_BASE_URL}/auth/me`, {
+    const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
       headers: getHeaders(token),
     });
     return res.json();
   },
 
   async updateProfile(token, data) {
-    const res = await fetch(`${API_BASE_URL}/auth/profile`, {
+    const res = await fetch(`${API_BASE_URL}/api/auth/profile`, {
       method: "PUT",
       headers: getHeaders(token),
       body: JSON.stringify(data),
